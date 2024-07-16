@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [contacts, setContacts] = useState([]);
-  const [field,setField] = useState([])
+  const [field, setField] = useState([]);
 
   useEffect(() => {
     const fetchDatas = async () => {
@@ -21,9 +21,9 @@ const Home = () => {
     };
     fetchDatas();
   }, []);
-const spam = (contactId)=>{
-  setField((prevField)=> [...prevField,contactId])
-}
+  const spam = (contactId) => {
+   setField("red")
+  };
 
   return (
     <div class="flex flex-col">
@@ -52,14 +52,14 @@ const spam = (contactId)=>{
                     Action
                   </th>
                   <th scope="col" class="px-6 py-4">
-                  <Link to='/create-contact'><IoPersonAddOutline /></Link>
-                    
+                    <Link to="/create-contact">
+                      <IoPersonAddOutline />
+                    </Link>
                   </th>
                 </tr>
               </thead>
               {contacts.map((contact) => (
-                <tbody key={contact.id}
-                className={field.includes(contact.id) ? "bg-red-200" : ""}>
+                <tbody key={contact.id} className="bg-green-800 text-white">
                   <tr class="border-b border-neutral-200 dark:border-white/10">
                     <td class="whitespace-nowrap px-6 py-4">{contact.name}</td>
                     <td class="whitespace-nowrap px-6 py-4">{contact.email}</td>
@@ -73,7 +73,7 @@ const spam = (contactId)=>{
                       {contact.phoneNumber}
                     </td>
                     <button
-                    onClick={()=>spam(contact.id)}
+                      onClick={() => spam(contact.id)}
                       type="button"
                       className="bg-red-600 text-white font-bold rounded-md m-5 p-1"
                     >
